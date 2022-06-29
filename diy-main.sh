@@ -17,6 +17,7 @@ sed -i 's/mContext, 400/mContext, 500/g' $CURRENT_DIR/TVBoxOSC/app/src/main/java
 sed -i 's/mContext, 300/mContext, 400/g' $CURRENT_DIR/TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/adapter/HistoryAdapter.java
 #删除详情页面语言
 sed -i '/tvLang/d' $CURRENT_DIR/TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/activity/DetailActivity.java
+sed -i '/tvLang/d' $CURRENT_DIR/TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/adapter/CollectAdapter.java
 lg1=$(sed -n  '/R.id.tvLang/=' $CURRENT_DIR/TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/adapter/GridAdapter.java)
 lg0=$(sed -n  '/R.id.tvArea/=' $CURRENT_DIR/TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/adapter/GridAdapter.java)
 let lg2=$lg0-1
