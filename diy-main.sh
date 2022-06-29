@@ -26,6 +26,7 @@ lh0=$(sed -n  '/R.id.tvArea/=' $CURRENT_DIR/TVBoxOSC/app/src/main/java/com/githu
 let lh2=$lh0-1
 sed -i "${lh1},${lh2}d" $CURRENT_DIR/TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/adapter/HistoryAdapter.java
 sed -i '/tvLang/d' $CURRENT_DIR/TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/adapter/HistoryAdapter.java
+sed -i 's/TextView tvArea/\/*TextView tvArea/g' $CURRENT_DIR/TVBoxOSC/app/src/main/java/com/github/tvbox/osc/ui/adapter/HistoryAdapter.java
 la1=$(sed -n  '/@+id\/tvLang/=' $CURRENT_DIR/TVBoxOSC/app/src/main/res/layout/activity_detail.xml)
 la0=$(sed -n  '/@+id\/tvType/=' $CURRENT_DIR/TVBoxOSC/app/src/main/res/layout/activity_detail.xml)
 let la2=$la0-1
