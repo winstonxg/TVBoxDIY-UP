@@ -1,0 +1,37 @@
+name: APK Build
+
+on:
+#  push:
+#    branches:
+#      - main
+#  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Clone project
+        run: git clone -b dev --depth=1 https://github.com/lm317379829/TVBoxOSC.git
+      - name: DIY
+        run: |
+          chmod +x diy-dev.sh
+          bash ${{ github.workspace }}/diy-dev.sh
+      - name: Build With Gradle
+        run: |
+          chmod +x gradlew
+          ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
+      - name: Prepare App
+        run: |
+          mkdir -p ${{ github.workspace }}/apk/
+          for file in `find ~ -name "*.apk" -print`; do
+            mv "$file" ${{ github.workspace }}/apk/
+          done
+      - name: Upload App To Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: com.github.tvbox.osc
+          path: ${{ github.workspace }}/apk/*
