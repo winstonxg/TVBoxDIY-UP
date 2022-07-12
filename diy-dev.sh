@@ -2,8 +2,7 @@
 
 #获取目录
 CURRENT_DIR=$(cd $(dirname $0); pwd)
-#图标修改
-mv $CURRENT_DIR/DIY/app_icon.png $CURRENT_DIR/TVBoxOSC/app/src/main/res/drawable/app_icon.png
+
 #背景修改
 mv $CURRENT_DIR/DIY/app_bg.png $CURRENT_DIR/TVBoxOSC/app/src/main/res/drawable/app_bg.png
 #缩略图清晰度修改
