@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Clone project
+      - name: Clone Project
         run: git clone -b dev --depth=1 https://github.com/lm317379829/TVBoxOSC.git
       - name: DIY
         run: |
