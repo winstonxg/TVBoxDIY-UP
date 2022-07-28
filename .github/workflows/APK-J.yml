@@ -15,11 +15,11 @@ jobs:
         with:
           fetch-depth: 0
       - name: Clone Project
-        run: git clone -b dev --depth=1 https://github.com/lm317379829/TVBoxOSC-J.git
+        run: git clone -b dev --depth=1 https://github.com/lm317379829/TVBoxOS-J
       - name: DIY
         run: |
-          chmod +x diy-dev.sh
-          bash ${{ github.workspace }}/diy-dev.sh
+          chmod +x diy-J.sh
+          bash ${{ github.workspace }}/diy-J.sh
       - name: Build With Gradle
         run: |
           cd TVBoxOSC-J
