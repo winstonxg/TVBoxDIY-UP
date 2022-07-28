@@ -22,7 +22,6 @@ jobs:
           bash ${{ github.workspace }}/diy-J.sh
       - name: Build With Gradle
         run: |
-          cd TVBoxOSC-J
           chmod +x gradlew
           ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
       - name: Prepare App
