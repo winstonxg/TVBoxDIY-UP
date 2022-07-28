@@ -1,4 +1,4 @@
-name: APK-dev Build
+name: APK-J Build
 
 on:
 #  push:
@@ -15,14 +15,14 @@ jobs:
         with:
           fetch-depth: 0
       - name: Clone Project
-        run: git clone -b dev --depth=1 https://github.com/lm317379829/TVBoxOSC.git
+        run: git clone -b dev --depth=1 https://github.com/lm317379829/TVBoxOSC-J.git
       - name: DIY
         run: |
           chmod +x diy-dev.sh
           bash ${{ github.workspace }}/diy-dev.sh
       - name: Build With Gradle
         run: |
-          cd TVBoxOSC
+          cd TVBoxOSC-J
           chmod +x gradlew
           ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
       - name: Prepare App
