@@ -15,11 +15,11 @@ jobs:
         with:
           fetch-depth: 0
       - name: Clone Project
-        run: git clone -b main --depth=1 https://github.com/lm317379829/TVBoxOSC.git
+        run: git clone -b main --depth=1 https://github.com/lm317379829/TVBoxOSC-O.git
       - name: DIY
         run: |
-          chmod +x diy-main.sh
-          bash ${{ github.workspace }}/diy-main.sh
+          chmod +x diy-O.sh
+          bash ${{ github.workspace }}/diy-O.sh
       - name: Build With Gradle
         run: |
           num=$(find ${{ github.workspace }} -name gradlew  | awk -F"/" '{print NF-1}')
