@@ -11,5 +11,7 @@ sed -i 's/TVBox/极影视/g' $CURRENT_DIR/$DIR/app/src/main/res/values/strings.x
 mv $CURRENT_DIR/DIY/app_bg.png $CURRENT_DIR/$DIR/app/src/main/res/drawable/app_bg.png
 #修正播放控制
 sed -i 's/重播本集/重播/g' $CURRENT_DIR/$DIR/app/src/main/res/layout/player_vod_control_view.xml
+#取消选集全屏
+sed -i 's/if (showPreview \&\& !fullWindows)/\/\/if (showPreview \&\& !fullWindows)/g' $CURRENT_DIR/$DIR/app/src/main/java/com/github/tvbox/osc/ui/activity/DetailActivity.java
 
 echo 'DIY end'
