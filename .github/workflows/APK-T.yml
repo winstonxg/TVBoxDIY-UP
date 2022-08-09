@@ -18,8 +18,8 @@ jobs:
         run: git clone -b main --depth=1 https://github.com/lm317379829/TVBoxOSC-T.git
       - name: DIY
         run: |
-          chmod +x diy-J.sh
-          bash ${{ github.workspace }}/diy-J.sh
+          chmod +x diy-T.sh
+          bash ${{ github.workspace }}/diy-T.sh
       - name: Build With Gradle
         run: |
           num=$(find ${{ github.workspace }} -name gradlew  | awk -F"/" '{print NF-1}')
