@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Clone Project
-        run: git clone -b main --depth=1 https://github.com/lm317379829/TVBoxOSC-O.git
+        run: git clone -b main --depth=1 https://github.com/CatVodTVOfficial/TVBoxOSC.git
       - name: DIY
         run: |
           chmod +x diy-O.sh
