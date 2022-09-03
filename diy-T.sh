@@ -60,9 +60,5 @@ mv $CURRENT_DIR/DIY/libijkffmpeg.so $CURRENT_DIR/$DIR/player/src/main/jniLibs/ar
 mv $CURRENT_DIR/DIY/libijksdl.so $CURRENT_DIR/$DIR/player/src/main/jniLibs/armeabi-v7a/libijksdl.so
 mv $CURRENT_DIR/DIY/libplayer.so $CURRENT_DIR/$DIR/player/src/main/jniLibs/armeabi-v7a/libplayer.so
 sed -i '/libLoader.loadLibrary(\"player\");                /i\try {\n                    libLoader.loadLibrary(\"ijkffmpeg\");\n                    libLoader.loadLibrary(\"ijksdl\");\n                } catch (Throwable throwable) {\n\n                }' $CURRENT_DIR/$DIR/player/src/main/java/tv/danmaku/ijk/media/player/IjkMediaPlayer.java
-#解决xwalk_core_library下载抽风
-wget --no-check-certificate -qO- "https://raw.githubusercontent.com/louisgeek/xwalk_core_library/master/com/github/louisgeek/xwalk_core_library/23.53.589.4/xwalk_core_library-23.53.589.4.aar" -O $CURRENT_DIR/$DIR/app/libs/xwalk_core_library-23.53.589.4.aar
-sed -i "s/implementation('org.xwalk:xwalk_shared_library:23.53.589.4')/implementation files('libs@xwalk_core_library-23.53.589.4.aar')/g" $CURRENT_DIR/$DIR/app/build.gradle
-sed -i 's#@#\\#g' $CURRENT_DIR/$DIR/app/build.gradle
-sed -i 's#xwalk#\\xwalk#g' $CURRENT_DIR/$DIR/app/build.gradle
+
 echo 'DIY end'
