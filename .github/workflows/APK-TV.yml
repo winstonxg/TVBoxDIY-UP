@@ -22,8 +22,8 @@ jobs:
           bash ${{ github.workspace }}/diy-TV.sh
       - name: Build With Gradle
         run: |
-          num=$(find ${{ github.workspace }} -name gradlew  | awk -F"/" '{print NF-1}')
-          DIR=$(find ${{ github.workspace }} -name gradlew  | cut -d \/ -f$num)
+          num=$(find ${{ github.workspace }} -name gradlew | grep -v exo | awk -F"/" '{print NF-1}')
+          DIR=$(find ${{ github.workspace }} -name gradlew | grep -v exo | cut -d \/ -f$num)
           cd $DIR
           chmod +x gradlew
           ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
