@@ -21,10 +21,10 @@ echo "" >>$CURRENT_DIR/$DIR/app/proguard-rules.pro
 echo "#新增设定" >>$CURRENT_DIR/$DIR/app/proguard-rules.pro 
 echo "-keep class com.xunlei.downloadlib.** {*;}" >>$CURRENT_DIR/$DIR/app/proguard-rules.pro 
 #添加PY支持
-wget --no-check-certificate -qO- "https://raw.githubusercontent.com/UndCover/PyramidStore/main/aar/pyramid.aar" -O $CURRENT_DIR/DIY/pyramid.aar
-mv $CURRENT_DIR/DIY/pyramid.aar $CURRENT_DIR/$DIR/app/libs/pyramid.aar
+wget --no-check-certificate -qO- "https://raw.githubusercontent.com/UndCover/PyramidStore/main/aar/pyramid.aar" -O $CURRENT_DIR/$DIR/app/libs/pyramid.aar
 sed -i "/thunder.jar/a\    implementation files('libs@pyramid.aar')" $CURRENT_DIR/$DIR/app/build.gradle
-sed -i 's#s@py#s\\\\py#g' $CURRENT_DIR/$DIR/app/build.gradle
+sed -i 's#@#\\#g' $CURRENT_DIR/$DIR/app/build.gradle
+sed -i 's#pyramid#\\pyramid#g' $CURRENT_DIR/$DIR/app/build.gradle
 echo "" >>$CURRENT_DIR/$DIR/app/proguard-rules.pro
 echo "" >>$CURRENT_DIR/$DIR/app/proguard-rules.pro
 echo "#添加PY支持" >>$CURRENT_DIR/$DIR/app/proguard-rules.pro
@@ -39,7 +39,6 @@ sed -i '/import android.util.Base64;/a\import com.github.catvod.crawler.SpiderNu
 sed -i '/import android.util.Base64;/a\import com.undcover.freedom.pyramid.PythonLoader;' $CURRENT_DIR/$DIR/app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
 sed -i '/private void parseJson(String apiUrl, String jsonStr)/a\        PythonLoader.getInstance().setConfig(jsonStr);' $CURRENT_DIR/$DIR/app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
 sed -i '/public Spider getCSP(SourceBean sourceBean)/a\        if (sourceBean.getApi().startsWith(\"py_\")) {\n        try {\n            return PythonLoader.getInstance().getSpider(sourceBean.getKey(), sourceBean.getExt());\n        } catch (Exception e) {\n            e.printStackTrace();\n            return new SpiderNull();\n        }\n    }' $CURRENT_DIR/$DIR/app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
-sed -i '/public Object\[\] proxyLocal(Map param)/a\        try {\n        if(param.containsKey(\"api\")){\n            String doStr = param.get(\"do\").toString();\n            if(doStr.equals(\"ck\"))\n                return PythonLoader.getInstance().proxyLocal(\"\",\"\",param);\n' $CURRENT_DIR/$DIR/app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
 sed -i '/public Object\[\] proxyLoca/a\    try {\n        if(param.containsKey(\"api\")){\n            String doStr = param.get(\"do\").toString();\n            if(doStr.equals(\"ck\"))\n                return PythonLoader.getInstance().proxyLocal(\"\",\"\",param);\n            SourceBean sourceBean = ApiConfig.get().getSource(doStr);\n            return PythonLoader.getInstance().proxyLocal(sourceBean.getKey(),sourceBean.getExt(),param);\n        }else{\n            String doStr = param.get(\"do\").toString();\n            if(doStr.equals(\"live\")) return PythonLoader.getInstance().proxyLocal(\"\",\"\",param);\n        }\n    } catch (Exception e) {\n        e.printStackTrace();\n    }\n' $CURRENT_DIR/$DIR/app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
 #替换影魔版IJK库
 wget --no-check-certificate -qO- "https://raw.githubusercontent.com/lm317379829/TVBoxOSC-J/main/player/src/main/jniLibs/armeabi-v7a/libijkffmpeg.so" -O $CURRENT_DIR/$DIR/player/src/main/jniLibs/armeabi-v7a/libijkffmpeg.so
