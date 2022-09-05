@@ -2,8 +2,8 @@
 
 #获取目录
 CURRENT_DIR=$(cd $(dirname $0); pwd)
-num=$(find $CURRENT_DIR -name gradlew | awk -F"/" '{print NF-1}')
-DIR=$(find $CURRENT_DIR -name gradlew | cut -d \/ -f$num)
+num=$(find $CURRENT_DIR -name gradlew | grep -v exo | awk -F"/" '{print NF-1}')
+DIR=$(find $CURRENT_DIR -name gradlew | grep -v exo | cut -d \/ -f$num)
 cd $CURRENT_DIR/$DIR
 #Git EXO解码器
 git clone -b release-v2 --depth=1 https://github.com/google/ExoPlayer.git exo
