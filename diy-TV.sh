@@ -8,7 +8,6 @@ cd $CURRENT_DIR/$DIR
 #Git EXO解码器
 git clone -b release-v2 --depth=1 https://github.com/google/ExoPlayer.git exo
 EDIR=$(cd $(dirname $0); pwd | sed 's#\/#\\\/#g')
-sed "s/\//\\//"
 sed -i "s#\/exo\/#$EDIR\/exo\/#g" $CURRENT_DIR/$DIR/settings.gradle
 
 #添加PY支持
