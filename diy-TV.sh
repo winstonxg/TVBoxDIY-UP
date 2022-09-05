@@ -8,6 +8,7 @@ cd $CURRENT_DIR/$DIR
 #Git EXO解码器
 git clone -b release-v2 --depth=1 https://github.com/google/ExoPlayer.git exo
 #添加PY支持
+mkdir $CURRENT_DIR/$DIR/app/libs
 wget --no-check-certificate -qO- "https://raw.githubusercontent.com/UndCover/PyramidStore/main/aar/pyramid.aar" -O $CURRENT_DIR/$DIR/app/libs/pyramid.aar
 sed -i "/squareup/a\    implementation files('libs@pyramid.aar')" $CURRENT_DIR/$DIR/app/build.gradle
 sed -i 's#@#\\#g' $CURRENT_DIR/$DIR/app/build.gradle
