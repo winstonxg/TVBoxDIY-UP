@@ -2,11 +2,15 @@
 
 #获取目录
 CURRENT_DIR=$(cd $(dirname $0); pwd)
-num=$(find $CURRENT_DIR -name gradlew  | awk -F"/" '{print NF-1}')
-DIR=$(find $CURRENT_DIR -name gradlew  | cut -d \/ -f$num)
+num=$(find $CURRENT_DIR -name gradlew | awk -F"/" '{print NF-1}')
+DIR=$(find $CURRENT_DIR -name gradlew | cut -d \/ -f$num)
 cd $CURRENT_DIR/$DIR
 #Git EXO解码器
 git clone -b release-v2 --depth=1 https://github.com/google/ExoPlayer.git exo
+EDIR=$(cd $(dirname $0); pwd | sed 's#\/#\\\/#g')
+sed "s/\//\\//"
+sed -i "s#\/exo\/#$EDIR\/exo\/#g" $CURRENT_DIR/$DIR/settings.gradle
+
 #添加PY支持
 mkdir $CURRENT_DIR/$DIR/app/libs
 wget --no-check-certificate -qO- "https://raw.githubusercontent.com/UndCover/PyramidStore/main/aar/pyramid.aar" -O $CURRENT_DIR/$DIR/app/libs/pyramid.aar
