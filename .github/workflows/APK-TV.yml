@@ -18,7 +18,7 @@ jobs:
         run: git clone -b main --depth=1 https://github.com/FongMi/TV.git
       - name: DIY
         run: |
-          chmod +x diy-J.sh
+          chmod +x diy-TV.sh
           bash ${{ github.workspace }}/diy-TV.sh
       - name: Build With Gradle
         run: |
