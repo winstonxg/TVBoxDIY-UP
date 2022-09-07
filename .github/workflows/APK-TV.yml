@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Clone Project
-        run: git clone -b main --depth=1 https://github.com/FongMi/TV.git
+        run: git clone -b dev --depth=1 https://github.com/FongMi/TV.git
       - name: DIY
         run: |
           chmod +x diy-TV.sh
