@@ -26,7 +26,7 @@ jobs:
           DIR=$(find ${{ github.workspace }} -name gradlew | grep -v exo | cut -d \/ -f$num)
           cd  ${{ github.workspace }}/$DIR
           chmod +x gradlew
-          ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
+          ./gradlew assembleDebug --build-cache --parallel --daemon --warning-mode all
       - name: Prepare App
         run: |
           mkdir -p ${{ github.workspace }}/apk/
