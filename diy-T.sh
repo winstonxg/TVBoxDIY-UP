@@ -6,10 +6,7 @@ num=$(find $CURRENT_DIR -name gradlew  | awk -F"/" '{print NF-1}')
 DIR=$(find $CURRENT_DIR -name gradlew  | cut -d \/ -f$num)
 cd $CURRENT_DIR/$DIR
 #xwalk修复
-mv $CURRENT_DIR/DIY/xwalk_shared_library-23.53.589.4.aar $CURRENT_DIR/$DIR/app/libs/xwalk_shared_library-23.53.589.4.aar
-sed -i "s/('org.xwalk:xwalk_shared_library:23.53.589.4')/ files('libs@xwalk_shared_library-23.53.589.4.aar')/g" $CURRENT_DIR/$DIR/app/build.gradle
-sed -i 's#@#\\#g' $CURRENT_DIR/$DIR/app/build.gradle
-sed -i 's#xwalk#\\xwalk#g' $CURRENT_DIR/$DIR/app/build.gradle
+sed -i 's/https:\/\/download.01.org\/crosswalk\/releases\/crosswalk\/android\/maven2/http:\/\/9xi4o.tk\/maven2/g' $CURRENT_DIR/$DIR/build.gradle
 
 #名称修改
 sed -i 's/TVBox/极影视/g' $CURRENT_DIR/$DIR/app/src/main/res/values-zh/strings.xml
