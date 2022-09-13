@@ -47,4 +47,5 @@ wget --no-check-certificate -qO- "https://raw.githubusercontent.com/lm317379829/
 wget --no-check-certificate -qO- "https://raw.githubusercontent.com/lm317379829/TVBoxOSC-J/main/player/src/main/jniLibs/armeabi-v7a/libijksdl.so" -O $CURRENT_DIR/$DIR/player/src/main/jniLibs/armeabi-v7a/libijksdl.so
 wget --no-check-certificate -qO- "https://raw.githubusercontent.com/lm317379829/TVBoxOSC-J/main/player/src/main/jniLibs/armeabi-v7a/libplayer.so" -O $CURRENT_DIR/$DIR/player/src/main/jniLibs/armeabi-v7a/libplayer.so
 sed -i '/libLoader.loadLibrary(\"player\"); /i\try {\n libLoader.loadLibrary(\"ijkffmpeg\");\n libLoader.loadLibrary(\"ijksdl\");\n } catch (Throwable throwable) {\n\n }' $CURRENT_DIR/$DIR/player/src/main/java/tv/danmaku/ijk/media/player/IjkMediaPlayer.java
+
 echo 'DIY End'
