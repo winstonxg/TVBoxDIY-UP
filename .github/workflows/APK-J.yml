@@ -17,7 +17,7 @@ jobs:
       - name: Clone Project
 #       run: git clone -b main --depth=1 https://github.com/q215613905/TVBoxOS.git
 #       run: git clone -b main --depth=1 https://github.com/winstonxg/TVBoxOS.git
-run: git clone -b main --depth=1 https://github.com/winstonxg/TVBoxOS/tree/1469c788479afcfd2f9c514f0293dc1cfadb6020
+run: git clone -b main --depth=1 https://github.com/winstonxg/TVBoxOS/tree/1469c788479afcfd2f9c514f0293dc1cfadb6020.git
       - name: DIY
         run: |
           chmod +x diy-J.sh
